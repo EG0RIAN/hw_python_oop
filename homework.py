@@ -71,15 +71,15 @@ class Training:
 
 class Running(Training):
     """Тренировка: бег."""
-    С_CAL_1: int = 18
-    С_CAL_2: int = 20
+    RUN_INDEX_1: int = 18
+    RUN_INDEX_2: int = 20
 
     def get_spent_calories(self) -> float:
         return (
             (
-                self.С_CAL_1
+                self.RUN_INDEX_1
                 * self.get_mean_speed()
-                - self.С_CAL_2
+                - self.RUN_INDEX_2
             )
             * self.weight
             / self.M_IN_KM
@@ -90,8 +90,8 @@ class Running(Training):
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
-    С_CAL_1: float = 0.035
-    С_CAL_2: float = 0.029
+    WLK_INDEX_1: float = 0.035
+    WLK_INDEX_2: float = 0.029
 
     def __init__(
         self,
@@ -106,9 +106,9 @@ class SportsWalking(Training):
     def get_spent_calories(self) -> float:
         return (
             (
-                self.С_CAL_1 * self.weight
+                self.WLK_INDEX_1 * self.weight
                 + (self.get_mean_speed() ** 2 // self.height)
-                * self.С_CAL_2 * self.weight
+                * self.WLK_INDEX_2 * self.weight
             )
             * (self.duration * self.HOUR_TO_MIN)
         )
@@ -116,7 +116,7 @@ class SportsWalking(Training):
 
 class Swimming(Training):
     """Тренировка: плавание."""
-    С_CAL_1: float = 1.1
+    SWM_INDEX_1: float = 1.1
     LEN_STEP: float = 1.38
 
     def __init__(self,
@@ -140,7 +140,7 @@ class Swimming(Training):
         return mean_speed
 
     def get_spent_calories(self) -> float:
-        return (self.get_mean_speed() + self.С_CAL_1) * 2 * self.weight
+        return (self.get_mean_speed() + self.SWM_INDEX_1) * 2 * self.weight
 
 
 def read_package(workout_type: str, data: list) -> Training:
