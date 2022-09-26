@@ -3,6 +3,8 @@ from typing import Dict, Type
 
 class InfoMessage:
     """Информационное сообщение о тренировке."""
+    FRAZES = ['Тип тренировки', 'Длительность', 'Дистанция', 'Ср. скорость', 'Потрачено ккал']
+
     def __init__(self,
                  training_type: str,
                  duration: float,
@@ -14,19 +16,14 @@ class InfoMessage:
         self.speed = speed
         self.calories = calories
         self.training_type = training_type
-    TEXT_1: str = "Тип тренировки"
-    TEXT_2: str = "Длительность"
-    TEXT_3: str = "Дистанция"
-    TEXT_4: str = "Ср. скорость"
-    TEXT_5: str = "Потрачено ккал"
 
     def get_message(self) -> str:
         return (
-            f'{self.TEXT_1}: {self.training_type}; '
-            f'{self.TEXT_2}: {self.duration:0.3f} ч.; '
-            f'{self.TEXT_3}: {self.distance:0.3f} км; '
-            f'{self.TEXT_4}: {self.speed:0.3f} км/ч; '
-            f'{self.TEXT_5}: {self.calories:0.3f}.'
+            f'{self.FRAZES[0]}: {self.training_type}; '
+            f'{self.FRAZES[1]}: {self.duration:0.3f} ч.; '
+            f'{self.FRAZES[2]}: {self.distance:0.3f} км; '
+            f'{self.FRAZES[3]}: {self.speed:0.3f} км/ч; '
+            f'{self.FRAZES[4]}: {self.calories:0.3f}.'
         )
 
 
@@ -36,11 +33,11 @@ class Training:
     M_IN_KM: float = 1000.0
     HOUR_TO_MIN: int = 60
 
-    def __init__(self,
-                 action: int,
-                 duration: float,
-                 weight: float,
-                 ) -> None:
+    def __init__(
+        self,
+        action: int,
+        duration: float,
+        weight: float,) -> None:
         self.action = action
         self.duration = duration
         self.weight = weight
