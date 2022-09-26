@@ -40,10 +40,11 @@ class Training:
     HOUR_TO_MIN: int = 60
 
     def __init__(
-        self,
-        action: int,
-        duration: float,
-        weight: float,) -> None:
+            self,
+            action: int,
+            duration: float,
+            weight: float
+    ) -> None:
         self.action = action
         self.duration = duration
         self.weight = weight
