@@ -3,13 +3,12 @@ from typing import Dict, Type
 
 class InfoMessage:
     """Информационное сообщение о тренировке."""
-    FRAZES = [
-        'Тип тренировки',
-        'Длительность',
-        'Дистанция',
-        'Ср. скорость',
-        'Потрачено ккал'
-    ]
+    MSG = (
+        "Тип тренировки: {training_type};"
+        "Длительность: {duration:.3f} ч.;"
+        "Дистанция: {distance:.3f} км;"
+        "Ср. скорость: {speed:.3f} км/ч;"
+        "Потрачено ккал: {calories:.3f}.")
 
     def __init__(self,
                  training_type: str,
@@ -24,13 +23,12 @@ class InfoMessage:
         self.training_type = training_type
 
     def get_message(self) -> str:
-        return (
-            f'{self.FRAZES[0]}: {self.training_type}; '
-            f'{self.FRAZES[1]}: {self.duration:0.3f} ч.; '
-            f'{self.FRAZES[2]}: {self.distance:0.3f} км; '
-            f'{self.FRAZES[3]}: {self.speed:0.3f} км/ч; '
-            f'{self.FRAZES[4]}: {self.calories:0.3f}.'
-        )
+        return self.MSG.format(
+            training_type=self.training_type,
+            duration=self.duration,
+            distance=self.distance,
+            speed=self.speed,
+            calories=self.calories)
 
 
 class Training:
